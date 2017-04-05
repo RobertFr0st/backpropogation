@@ -1,15 +1,15 @@
-import java.util.ArrayList;
 
 /**
  * Created by nick on 4/3/17.
  */
 public class Layer {
-  private ArrayList<Neuron> neurons;
+  public Neuron[] neurons;
 
-  Layer(Integer neuron_count, Integer next_layer_neuron_count)
+  Layer(Integer neuron_count, Integer previous_layer_neuron_count)
   {
+    neurons = new Neuron[neuron_count];
     for (int i = 0; i < neuron_count; i++) {
-      neurons.add(new Neuron(next_layer_neuron_count));
+      neurons[i] = new Neuron(previous_layer_neuron_count);
     }
   }
 
@@ -25,9 +25,9 @@ public class Layer {
 
   public void setSigma(Double[] sigma)
   {
-    for (int i = 0; i < neurons.size(); i++)
+    for (int i = 0; i < neurons.length; i++)
     {
-      neurons.get(i).sigma = sigma[i];
+      neurons[i].sigma = sigma[i];
     }
   }
 }
